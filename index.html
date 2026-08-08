@@ -16,51 +16,59 @@
 
 <body>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-
-    <div class="sidebar-top">
+  <!-- TOP NAVIGATION -->
+  <header class="topbar">
+    <div class="topbar-brand">
       <h1 class="name">Suman J. Biswas</h1>
-
-      <div class="titles">
-        <div class="title-big">Game Developer</div>
-        <div class="title-big">Technical Artist</div>
-      </div>
-
-      <nav class="side-nav">
-        <a class="nav-link" href="#welcome"><span class="marker"></span> Welcome</a>
-        <a class="nav-link" href="#about"><span class="marker"></span> About Me</a>
-        <a class="nav-link" href="#projects"><span class="marker"></span> Projects</a>
-        <a class="nav-link" href="#skills"><span class="marker"></span> Skills</a>
-      </nav>
+      <div class="title-big">Game Developer</div>
     </div>
 
-    <div class="sidebar-bottom">
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      ☰
+    </button>
 
-      <div class="email">
-        <a href="mailto:rb121202@gmail.com">rb121202@gmail.com</a>
-      </div>
+    <nav class="top-nav" aria-label="Primary">
+      <a class="nav-link" href="#hero"><span class="marker"></span> Home</a>
+      <a class="nav-link" href="#welcome"><span class="marker"></span> Intro</a>
+      <a class="nav-link" href="#about"><span class="marker"></span> About Me</a>
+      <a class="nav-link" href="#projects"><span class="marker"></span> Projects</a>
+      <a class="nav-link" href="#skills"><span class="marker"></span> Skills</a>
+    </nav>
 
-      <div class="sidebar-buttons">
-  <a class="btn btn-resume" href="files/SumanB_Resume.pdf" target="_blank">Resume</a>
-  <a class="btn btn-linkedin" href="https://www.linkedin.com/in/suman-biswass" target="_blank">LinkedIn</a>
-  <a class="btn btn-github" href="https://github.com/SJB-12" target="_blank">GitHub</a>
-</div>
-
+    <div class="topbar-actions">
+      <a class="btn btn-resume" href="files/SumanB_Resume.pdf" target="_blank">Resume</a>
+      <a class="btn btn-linkedin" href="https://www.linkedin.com/in/suman-biswass" target="_blank">LinkedIn</a>
+      <a class="btn btn-github" href="https://github.com/SJB-12" target="_blank">GitHub</a>
+      <a class="email-link" href="mailto:rb121202@gmail.com">rb121202@gmail.com</a>
     </div>
-
-  </aside>
+  </header>
 
   <!-- MAIN CONTENT -->
   <main class="content">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="section hero-section">
+      <div class="hero-copy">
+        <p class="eyebrow">Now Live</p>
+        <h2 class="hero-title">Building worlds that feel alive.</h2>
+        <p class="hero-subtitle">
+          Game developer focused on polished gameplay, immersive visuals,
+          and systems that make players stay a little longer.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-resume" href="#projects">View Projects</a>
+          <a class="btn btn-ghost" href="#about">Read More</a>
+        </div>
+      </div>
+    </section>
 
     <!-- WELCOME SECTION -->
     <section id="welcome" class="section first-section">
 
       <div class="welcome-container">
         
-        <!-- TOP BACKGROUND SECTION -->
-        <div class="welcome-top">
+        <!-- INTRO PANEL -->
+        <div class="welcome-top glass-card">
           
           <!-- TEXT LEFT -->
           <div class="welcome-text">
@@ -70,7 +78,6 @@
 
             <div class="job-title">
                 <div class="job-role">Game Developer</div>
-                <div class="job-role">Technical Artist</div>
             </div>
 
             <p class="one-liner">
@@ -90,7 +97,7 @@
         </div>
 
         <!-- STATS SECTION -->
-        <div class="welcome-stats">
+        <div class="welcome-stats glass-card">
           <div class="stats-box">
             <div class="stats-number">1+</div>
             <div class="stats-label">Years<br>Experience</div>

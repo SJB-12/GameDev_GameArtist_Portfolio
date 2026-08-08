@@ -1,5 +1,7 @@
 const navLinks = document.querySelectorAll(".nav-link");
 const sections = document.querySelectorAll(".section");
+const topbar = document.querySelector(".topbar");
+const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
 
 function clearActive() {
   navLinks.forEach(link => link.classList.remove("active"));
@@ -28,20 +30,17 @@ navLinks.forEach(link => {
   link.addEventListener("click", () => {
     clearActive();
     link.classList.add("active");
-    
-    // Close mobile menu if open
-    if (window.innerWidth <= 768) {
-      document.querySelector('.sidebar').classList.remove('active');
+
+    if (window.innerWidth <= 768 && topbar) {
+      topbar.classList.remove("is-open");
+      if (mobileMenuToggle) mobileMenuToggle.setAttribute("aria-expanded", "false");
     }
   });
 });
 
-// Mobile menu toggle
-const mobileMenuToggle = document.createElement('button');
-mobileMenuToggle.className = 'mobile-menu-toggle';
-mobileMenuToggle.innerHTML = '☰';
-document.body.appendChild(mobileMenuToggle);
-
-mobileMenuToggle.addEventListener('click', () => {
-  document.querySelector('.sidebar').classList.toggle('active');
-});
+if (mobileMenuToggle && topbar) {
+  mobileMenuToggle.addEventListener("click", () => {
+    const isOpen = topbar.classList.toggle("is-open");
+    mobileMenuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+}
