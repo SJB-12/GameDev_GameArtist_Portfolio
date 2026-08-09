@@ -12,9 +12,15 @@
   />
 
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 </head>
 
-<body>
+<body class="is-loading">
+
+  <div class="page-loader" role="status" aria-label="Loading portfolio">
+    <div id="loader-animation" class="loader-animation"></div>
+  </div>
+  <script id="loader-animation-data" type="application/json">{"nm":"Main Scene","ddd":0,"h":512,"w":512,"meta":{"g":"@lottiefiles/creator@1.104.0"},"layers":[{"ty":0,"nm":"loading","sr":1,"st":0,"op":61.875,"ip":0,"hd":false,"ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[540,960]},"s":{"a":0,"k":[48,48]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[256,256]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"w":1080,"h":1920,"refId":"precomp_Comp 1_lVDfiGfNhJ_7de077a5-0397-41d0-b8aa-121a9013fb06","ind":1}],"v":"5.7.0","fr":30,"op":150,"ip":0,"assets":[{"nm":"Comp 1","id":"precomp_Comp 1_lVDfiGfNhJ_7de077a5-0397-41d0-b8aa-121a9013fb06","fr":30,"layers":[{"ty":4,"nm":"Shape Layer 1","sr":1,"st":0,"op":61.875,"ip":0,"hd":false,"ln":"13","ddd":0,"bm":0,"hasMask":false,"ao":0,"ks":{"a":{"a":0,"k":[-128,130,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":1,"k":[{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[287.103,1090,0],"t":0},{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[534.103,843,0],"t":15},{"o":{"x":0.167,"y":0},"i":{"x":0.667,"y":1},"s":[789.103,1090,0],"t":30},{"o":{"x":0.167,"y":0},"i":{"x":0.667,"y":1},"s":[534.103,843,0],"t":46.88},{"s":[287.103,1090,0],"t":61.88}]},"r":{"a":1,"k":[{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[0],"t":0},{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[180],"t":15},{"o":{"x":0.333,"y":0},"i":{"x":0.667,"y":1},"s":[180],"t":30},{"s":[0],"t":46.88}]},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}},"shapes":[{"ty":"gr","bm":0,"hd":false,"nm":"Rectangle 1","it":[{"ty":"rc","bm":0,"hd":false,"nm":"Rectangle Path 1","d":1,"p":{"a":0,"k":[0,0]},"r":{"a":0,"k":0},"s":{"a":0,"k":[464,392]}},{"ty":"st","bm":0,"hd":false,"nm":"Stroke 1","lc":1,"lj":1,"ml":4,"o":{"a":0,"k":100},"w":{"a":1,"k":[{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[33],"t":0},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[101],"t":15},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[33],"t":30},{"o":{"x":0.167,"y":0.167},"i":{"x":0.833,"y":0.833},"s":[101],"t":46.88},{"s":[33],"t":61.88}]},"c":{"a":0,"k":[0.3961,0.6745,1]}},{"ty":"fl","bm":0,"hd":false,"nm":"Fill 1","c":{"a":0,"k":[1,1,1]},"r":1,"o":{"a":0,"k":100}},{"ty":"tr","a":{"a":0,"k":[0,0]},"s":{"a":0,"k":[100,100]},"sk":{"a":0,"k":0},"p":{"a":0,"k":[-128,130]},"r":{"a":0,"k":0},"sa":{"a":0,"k":0},"o":{"a":0,"k":100}}]}],"ind":1}]}]}</script>
 
   <!-- TOP NAVIGATION -->
   <header class="topbar">
@@ -37,6 +43,9 @@
 
     <!-- HERO SECTION -->
     <section id="hero" class="section hero-section">
+      <video class="hero-background-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="Videos/blackHolevideo.mp4" type="video/mp4" />
+      </video>
       <div class="hero-copy">
         <h2 class="hero-title">Suman J. Biswas</h2>
         <p class="hero-subtitle">Game Developer <span aria-hidden="true">|</span> 3D Artist</p>

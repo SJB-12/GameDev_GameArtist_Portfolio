@@ -2,6 +2,30 @@ const navLinks = document.querySelectorAll(".nav-link");
 const sections = document.querySelectorAll(".section");
 const topbar = document.querySelector(".topbar");
 const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+const pageLoader = document.querySelector(".page-loader");
+const loaderAnimation = document.querySelector("#loader-animation");
+const loaderAnimationData = document.querySelector("#loader-animation-data");
+const minimumLoadingTime = 3000;
+const loadingStartedAt = performance.now();
+
+if (window.lottie && loaderAnimation && loaderAnimationData) {
+  window.lottie.loadAnimation({
+    container: loaderAnimation,
+    renderer: "svg",
+    loop: true,
+    autoplay: true,
+    animationData: JSON.parse(loaderAnimationData.textContent)
+  });
+}
+
+window.addEventListener("load", () => {
+  const remainingTime = Math.max(0, minimumLoadingTime - (performance.now() - loadingStartedAt));
+
+  window.setTimeout(() => {
+    pageLoader?.classList.add("is-hidden");
+    document.body.classList.remove("is-loading");
+  }, remainingTime);
+});
 
 function clearActive() {
   navLinks.forEach(link => link.classList.remove("active"));
