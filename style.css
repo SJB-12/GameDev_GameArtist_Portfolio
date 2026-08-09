@@ -366,8 +366,9 @@ body.is-loading {
 .welcome-top {
   position: relative;
   width: 100%;
-  min-height: 540px;
-  padding: 62px clamp(34px, 6vw, 110px);
+  /* Fit the available viewport minus header so the section doesn't require scrolling */
+  min-height: calc(100vh - 110px);
+  padding: 40px clamp(20px, 4vw, 80px);
   display: flex;
   flex: 1 1 auto;
   justify-content: space-between;
@@ -451,9 +452,12 @@ body.is-loading {
 .profile-wrapper {
   position: relative;
   z-index: 1;
-  margin: 200px auto 0;
+  /* lift the frame up so the whole intro fits on one screen */
+  margin: 40px auto 0;
   display: flex;
   justify-content: center;
+  /* nudge the whole frame a bit to the right */
+  transform: translateX(40px);
 }
 
 .profile-frame {
@@ -507,18 +511,20 @@ body.is-loading {
 
 .welcome-stats {
   width: 100%;
-  max-width: 540px;
+  /* restrict total width so tiles line up centered beneath the frame */
+  max-width: 680px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
-  gap: 14px;
+  gap: 36px;
+  margin-top: 28px;
   align-items: center;
   padding-bottom: 6px;
 }
 
 .stats-box {
   min-height: 80px;
-  padding: 12px 14px;
+  padding: 10px 12px;
   border: 1px solid rgba(255,255,255,0.13);
   border-radius: 14px;
   background: linear-gradient(135deg, rgba(255,255,255,0.13), rgba(255,255,255,0.05));
@@ -526,9 +532,45 @@ body.is-loading {
   box-shadow: 0 8px 22px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.14);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
   flex: 0 0 auto;
-  width: 105px;
+  width: 88px;
+  /* subtle base glow animation; each tile will get a staggered delay below */
+  animation: stats-glow 2.6s ease-in-out infinite alternate;
+}
+
+@keyframes stats-glow {
+  0% {
+    box-shadow: 0 8px 22px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.13);
+    filter: none;
+  }
+  50% {
+    box-shadow: 0 18px 44px rgba(77,184,255,0.18), 0 0 36px rgba(77,184,255,0.08) inset;
+    border-color: rgba(77,184,255,0.7);
+    filter: drop-shadow(0 6px 18px rgba(77,184,255,0.08));
+  }
+  100% {
+    box-shadow: 0 8px 22px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.13);
+    filter: none;
+  }
+}
+
+/* Stagger the glow sequence */
+.welcome-stats .stats-box:nth-child(1) { animation-delay: 0s; }
+.welcome-stats .stats-box:nth-child(2) { animation-delay: 0.22s; }
+.welcome-stats .stats-box:nth-child(3) { animation-delay: 0.44s; }
+.welcome-stats .stats-box:nth-child(4) { animation-delay: 0.66s; }
+.welcome-stats .stats-box:nth-child(5) { animation-delay: 0.88s; }
+
+/* Make the last tile slightly wider and reduce its label size so the text fits */
+.welcome-stats .stats-box:last-child {
+  width: 110px;
+}
+.welcome-stats .stats-box:last-child .stats-label {
+  font-size: 10px;
+  line-height: 1.15;
 }
 
 @media (max-width: 1024px) {
@@ -553,7 +595,8 @@ body.is-loading {
 
   .welcome-stats {
     flex-wrap: nowrap;
-    gap: 8px;
+    gap: 12px;
+    margin-top: 14px;
   }
 
   .stats-box {
@@ -572,9 +615,9 @@ body.is-loading {
 }
 
 .stats-box:hover {
-  transform: translateY(-4px);
   border-color: rgba(77, 184, 255, 0.72);
-  background: linear-gradient(135deg, rgba(77,184,255,0.22), rgba(255,255,255,0.07));
+  background: linear-gradient(135deg, rgba(77,184,255,0.12), rgba(255,255,255,0.04));
+  box-shadow: 0 14px 36px rgba(77,184,255,0.08), inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
 .stats-number {
@@ -918,9 +961,10 @@ body.is-loading {
   }
 
   .welcome-stats {
-    gap: 6px;
+    gap: 18px;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 12px;
   }
 
   .stats-box {
