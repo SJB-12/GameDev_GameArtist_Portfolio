@@ -62,6 +62,24 @@ navLinks.forEach(link => {
   });
 });
 
+// Animate the About profile frame + stats tiles whenever they enter the viewport
+const aboutAside = document.querySelector(".about-aside");
+if (aboutAside) {
+  const aboutObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          aboutAside.classList.add("in-view");
+        } else {
+          aboutAside.classList.remove("in-view");
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+  aboutObserver.observe(aboutAside);
+}
+
 if (mobileMenuToggle && topbar) {
   mobileMenuToggle.addEventListener("click", () => {
     const isOpen = topbar.classList.toggle("is-open");

@@ -458,6 +458,23 @@ body.is-loading {
   justify-content: center;
   /* nudge the whole frame a bit to the right */
   transform: translateX(40px);
+  opacity: 0;
+}
+
+/* Animation runs only when the about section scrolls into view */
+.about-aside.in-view .profile-wrapper {
+  animation: slideInFromRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(180px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(40px);
+  }
 }
 
 .profile-frame {
@@ -520,6 +537,24 @@ body.is-loading {
   margin-top: 28px;
   align-items: center;
   padding-bottom: 6px;
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+/* Animation runs only when the about section scrolls into view */
+.about-aside.in-view .welcome-stats {
+  animation: slideUpFromBottom 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+}
+
+@keyframes slideUpFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .stats-box {
