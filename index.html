@@ -35,6 +35,15 @@
       <a class="nav-link" href="#skills">Skills</a>
     </nav>
 
+    <div class="portfolio-toggle-container">
+      <span class="toggle-label active" data-view="gamedev">Game Dev</span>
+      <label class="switch" aria-label="Toggle between Game Dev and Game Artist portfolio view">
+        <input type="checkbox" id="portfolio-mode-toggle">
+        <span class="slider"></span>
+      </label>
+      <span class="toggle-label" data-view="gameartist">Game Artist</span>
+    </div>
+
   </header>
 
   <!-- MAIN CONTENT -->
@@ -154,7 +163,7 @@
     <section id="projects" class="section divider">
       <h2>Projects</h2>
 
-      <div class="projects-grid">
+      <div class="projects-grid" id="projects-grid-container">
 
         <!-- PROJECT 1 -->
         <article class="project-card">
