@@ -93,6 +93,11 @@ const toggleLogos = document.querySelectorAll(".toggle-logo");
 const projectsGrid = document.getElementById("projects-grid-container");
 
 const gameDevProjectsHTML = `
+        <!-- PROJECTS HERO -->
+        <div class="projects-hero">
+          <h2 class="projects-hero-title">Projects</h2>
+        </div>
+
         <!-- PROJECT 1 -->
         <article class="project-card">
           <div class="project-video-container">
@@ -230,20 +235,39 @@ const gameDevProjectsHTML = `
 `;
 
 const gameArtistProjectsHTML = `
-        <!-- ART PROJECT 1 -->
-        <article class="project-card">
-          <div class="project-image-container">
-            <img src="artPortfolioFiles/wcpl banner.png" alt="WCPL Banner Art" class="project-image">
+        <!-- PROJECTS HERO -->
+        <div class="projects-hero">
+          <h2 class="projects-hero-title">Projects</h2>
+        </div>
+
+        <!-- ART SHOWCASE 1: CRICKET CLASH -->
+        <div class="artist-showcase">
+          <div class="artist-showcase-bg">
+            <img src="artPortfolioFiles/wcpl banner.png" alt="Cricket Clash Banner Art">
           </div>
-          <h3>WCPL Banner & Promotional Art</h3>
-          <div class="project-tools">
-            <span class="tool-tag">Photoshop</span>
-            <span class="tool-tag">Illustration</span>
+
+          <div class="artist-showcase-inner">
+            <div class="artist-showcase-text">
+              <h2 class="artist-showcase-title">Cricket Clash</h2>
+              <p class="artist-showcase-subtitle">Wega Labs</p>
+            </div>
+
+            <div class="artist-showcase-right">
+              <h3 class="artist-showcase-heading">Environments</h3>
+              <div class="artist-showcase-cards">
+                <div class="artist-card">
+                  <img src="artPortfolioFiles/env1.png" alt="Environment 1">
+                </div>
+                <div class="artist-card">
+                  <img src="artPortfolioFiles/env2.png" alt="Environment 2">
+                </div>
+                <div class="artist-card">
+                  <img src="artPortfolioFiles/env3.png" alt="Environment 3">
+                </div>
+              </div>
+            </div>
           </div>
-          <p>
-            Promotional key art and environmental banner designs for WCPL, crafted to capture energetic cricket action and sports aesthetics.
-          </p>
-        </article>
+        </div>
 
         <!-- ART PROJECT 2 -->
         <article class="project-card">
