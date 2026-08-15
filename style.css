@@ -833,28 +833,6 @@ body.is-loading {
 /* ============================= */
 /* DISCLAIMER */
 /* ============================= */
-
-.art-disclaimer {
-  margin-top: 100px;
-  padding: 30px 20px;
-  text-align: center;
-  font-size: 16px;
-  color: #b9c6d3;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.art-disclaimer strong { color: #e6eef7; }
-
-.art-disclaimer a {
-  color: #4db8ff;
-  text-decoration: none;
-  font-weight: 600;
-  margin-left: 4px;
-}
-
-.art-disclaimer a:hover { text-decoration: underline; }
-
-/* ============================= */
 /* MOBILE TOGGLE */
 /* ============================= */
 
@@ -1087,14 +1065,30 @@ body.is-loading {
   color: var(--muted);
 }
 
-.toggle-label {
+.toggle-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
   cursor: pointer;
-  transition: color 0.3s ease;
+  border-radius: 10px;
+  padding: 4px;
+  opacity: 0.45;
+  filter: grayscale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
+  -webkit-user-drag: none;
 }
 
-.toggle-label.active {
-  color: var(--accent);
+.toggle-logo:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.toggle-logo.active {
+  opacity: 1;
+  filter: grayscale(0);
+  box-shadow: 0 0 14px rgba(77, 184, 255, 0.35), inset 0 0 0 1px rgba(77, 184, 255, 0.4);
+  background: rgba(77, 184, 255, 0.08);
 }
 
 .switch {

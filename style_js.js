@@ -89,7 +89,7 @@ if (mobileMenuToggle && topbar) {
 
 // Portfolio Mode Toggle (Game Dev vs Game Artist)
 const modeToggle = document.getElementById("portfolio-mode-toggle");
-const toggleLabels = document.querySelectorAll(".toggle-label");
+const toggleLogos = document.querySelectorAll(".toggle-logo");
 const projectsGrid = document.getElementById("projects-grid-container");
 
 const gameDevProjectsHTML = `
@@ -325,7 +325,7 @@ if (modeToggle && projectsGrid) {
   modeToggle.addEventListener("change", () => {
     const isArtist = modeToggle.checked;
     
-    toggleLabels.forEach(lbl => {
+    toggleLogos.forEach(lbl => {
       if (lbl.getAttribute("data-view") === "gameartist") {
         lbl.classList.toggle("active", isArtist);
       } else {
@@ -340,7 +340,7 @@ if (modeToggle && projectsGrid) {
     }
   });
 
-  toggleLabels.forEach(lbl => {
+  toggleLogos.forEach(lbl => {
     lbl.addEventListener("click", () => {
       const view = lbl.getAttribute("data-view");
       if (view === "gameartist") {
