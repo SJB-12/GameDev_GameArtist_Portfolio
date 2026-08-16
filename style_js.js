@@ -213,6 +213,7 @@ const gameDevProjectsHTML = `
 const gameArtistProjectsHTML = `
         <!-- PROJECTS HERO -->
         <div class="projects-hero">
+          <div class="projects-hero-wave-bg"></div>
           <h2 class="projects-hero-title">Projects</h2>
         </div>
 
@@ -491,7 +492,7 @@ const showcaseObserver = new IntersectionObserver(
 );
 
 function observeShowcases() {
-  document.querySelectorAll(".artist-showcase").forEach(el => showcaseObserver.observe(el));
+  document.querySelectorAll(".artist-showcase, .projects-hero").forEach(el => showcaseObserver.observe(el));
 }
 
 // Game Dev project cards: fall in from the front as they scroll into view
