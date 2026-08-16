@@ -520,12 +520,42 @@ function observeProjectCards() {
 }
 
 if (modeToggle && projectsGrid) {
+  let isInitialLoad = true;
+
   const syncPortfolioView = () => {
     const isArtist = modeToggle.checked;
     
     // Toggle class on body to let CSS apply view-specific overrides
     document.body.classList.toggle("artist-mode", isArtist);
     
+    // Trigger topbar reveal wave animation
+    if (!isInitialLoad) {
+      const revealCircle = document.getElementById("topbar-reveal-circle");
+      const toggleContainer = document.querySelector(".portfolio-toggle-container");
+      if (revealCircle && toggleContainer) {
+        const toggleRect = toggleContainer.getBoundingClientRect();
+        const topbarElement = document.querySelector(".topbar");
+        if (topbarElement) {
+          const topbarRect = topbarElement.getBoundingClientRect();
+          
+          const x = (toggleRect.left + toggleRect.width / 2) - topbarRect.left;
+          const y = (toggleRect.top + toggleRect.height / 2) - topbarRect.top;
+          
+          revealCircle.style.left = `${x}px`;
+          revealCircle.style.top = `${y}px`;
+          
+          revealCircle.classList.remove("animating-dev", "animating-artist");
+          void revealCircle.offsetWidth;
+          
+          if (isArtist) {
+            revealCircle.classList.add("animating-artist");
+          } else {
+            revealCircle.classList.add("animating-dev");
+          }
+        }
+      }
+    }
+
     toggleLogos.forEach(lbl => {
       if (lbl.getAttribute("data-view") === "gameartist") {
         lbl.classList.toggle("active", isArtist);
@@ -559,6 +589,7 @@ if (modeToggle && projectsGrid) {
 
   // Sync state on load (in case of page refresh retaining state)
   syncPortfolioView();
+  isInitialLoad = false;
 }
 
 // Skills magnet hover: only the neighbouring boxes grow a little
