@@ -333,17 +333,17 @@ body.is-loading {
   margin: 0;
   font-family: "Horizon", "Oxanium", sans-serif;
   font-size: clamp(78px, 10.5vw, 80px);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 0.88;
   letter-spacing: -0.045em;
   white-space: nowrap;
-  color: #f5fbff;
+  color: var(--accent);
   background: none;
   -webkit-background-clip: initial;
-  -webkit-text-fill-color: #f5fbff;
+  -webkit-text-fill-color: var(--accent);
   text-shadow:
     0 2px 18px rgba(0,0,0,0.45),
-    0 0 32px rgba(77,184,255,0.12);
+    0 0 32px rgba(77,184,255,0.35);
   opacity: 0;
 }
 
@@ -359,7 +359,7 @@ body:not(.is-loading) .hero-section .hero-title {
   line-height: 1.2;
   font-weight: 400;
   letter-spacing: 0.035em;
-  color: var(--accent);
+  color: #f5fbff;
   opacity: 0;
 }
 
