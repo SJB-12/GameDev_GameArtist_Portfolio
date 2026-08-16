@@ -392,40 +392,18 @@ const gameArtistProjectsHTML = `
         </div>
 `;
 
-if (modeToggle && projectsGrid) {
-  modeToggle.addEventListener("change", () => {
-    const isArtist = modeToggle.checked;
-    
-    toggleLogos.forEach(lbl => {
-      if (lbl.getAttribute("data-view") === "gameartist") {
-        lbl.classList.toggle("active", isArtist);
-      } else {
-        lbl.classList.toggle("active", !isArtist);
-      }
-    });
+let charCarouselTimer = null;
+let personalCarouselTimer = null;
 
-    if (isArtist) {
-      projectsGrid.innerHTML = gameArtistProjectsHTML;
-      initCharCarousel();
-      initPersonalCarousel();
-      observeShowcases();
-    } else {
-      projectsGrid.innerHTML = gameDevProjectsHTML;
-      observeProjectCards();
-    }
-  });
-
-  toggleLogos.forEach(lbl => {
-    lbl.addEventListener("click", () => {
-      const view = lbl.getAttribute("data-view");
-      if (view === "gameartist") {
-        modeToggle.checked = true;
-      } else {
-        modeToggle.checked = false;
-      }
-      modeToggle.dispatchEvent(new Event("change"));
-    });
-  });
+function clearCarouselTimers() {
+  if (charCarouselTimer) {
+    clearTimeout(charCarouselTimer);
+    charCarouselTimer = null;
+  }
+  if (personalCarouselTimer) {
+    clearTimeout(personalCarouselTimer);
+    personalCarouselTimer = null;
+  }
 }
 
 // Character carousel: cards cycle so the center card enlarges, then shrinks as the next one takes its place
@@ -436,9 +414,13 @@ function initCharCarousel() {
   const cards = Array.from(carousel.children);
   const total = cards.length;
   let centerIndex = 0;
-  let timer = null;
 
   const layout = () => {
+    const carouselWidth = carousel.offsetWidth || 800;
+    const isMobile = window.innerWidth <= 768;
+    // Calculate card translation steps dynamically based on container width
+    const stepX = isMobile ? carouselWidth * 0.28 : Math.min(240, carouselWidth * 0.28);
+
     cards.forEach((card, i) => {
       let rel = (i - centerIndex) % total;
       if (rel > 3) rel -= total;
@@ -450,16 +432,16 @@ function initCharCarousel() {
           x = 0; scale = 1.35; z = 10; opacity = 1;
           break;
         case 1:
-          x = 240; scale = 1; z = 6; opacity = 1;
+          x = stepX; scale = 1; z = 6; opacity = 1;
           break;
         case -1:
-          x = -240; scale = 1; z = 6; opacity = 1;
+          x = -stepX; scale = 1; z = 6; opacity = 1;
           break;
         case 2:
-          x = 470; scale = 0.72; z = 3; opacity = 0.55;
+          x = stepX * 1.95; scale = 0.72; z = 3; opacity = 0.55;
           break;
         case -2:
-          x = -470; scale = 0.72; z = 3; opacity = 0.55;
+          x = -stepX * 1.95; scale = 0.72; z = 3; opacity = 0.55;
           break;
         default:
           x = 0; scale = 0.45; z = 1; opacity = 0.25;
@@ -476,11 +458,19 @@ function initCharCarousel() {
   const step = () => {
     centerIndex = (centerIndex + 1) % total;
     layout();
-    timer = setTimeout(step, 2400);
+    charCarouselTimer = setTimeout(step, 2400);
   };
 
+  // Run layout function on window resize as well for instant responsiveness
+  const resizeHandler = () => {
+    if (document.getElementById("char-carousel")) {
+      layout();
+    }
+  };
+  window.addEventListener("resize", resizeHandler);
+
   layout();
-  timer = setTimeout(step, 2400);
+  charCarouselTimer = setTimeout(step, 2400);
 }
 
 // Personal carousel: shows one large card at a time, cycling through them
@@ -491,7 +481,6 @@ function initPersonalCarousel() {
   const cards = Array.from(carousel.children);
   const total = cards.length;
   let index = 0;
-  let timer = null;
 
   const show = i => {
     cards.forEach((card, idx) => {
@@ -502,11 +491,11 @@ function initPersonalCarousel() {
   const step = () => {
     index = (index + 1) % total;
     show(index);
-    timer = setTimeout(step, 3000);
+    personalCarouselTimer = setTimeout(step, 3000);
   };
 
   show(0);
-  timer = setTimeout(step, 3000);
+  personalCarouselTimer = setTimeout(step, 3000);
 }
 
 // Animate artist showcase subsections whenever they enter the viewport
@@ -526,7 +515,6 @@ const showcaseObserver = new IntersectionObserver(
 function observeShowcases() {
   document.querySelectorAll(".artist-showcase").forEach(el => showcaseObserver.observe(el));
 }
-observeShowcases();
 
 // Game Dev project cards: fall in from the front as they scroll into view
 const cardObserver = new IntersectionObserver(
@@ -551,7 +539,48 @@ function observeProjectCards() {
     }
   });
 }
-observeProjectCards();
+
+if (modeToggle && projectsGrid) {
+  const syncPortfolioView = () => {
+    const isArtist = modeToggle.checked;
+    
+    // Toggle class on body to let CSS apply view-specific overrides
+    document.body.classList.toggle("artist-mode", isArtist);
+    
+    toggleLogos.forEach(lbl => {
+      if (lbl.getAttribute("data-view") === "gameartist") {
+        lbl.classList.toggle("active", isArtist);
+      } else {
+        lbl.classList.toggle("active", !isArtist);
+      }
+    });
+
+    clearCarouselTimers();
+
+    if (isArtist) {
+      projectsGrid.innerHTML = gameArtistProjectsHTML;
+      initCharCarousel();
+      initPersonalCarousel();
+      observeShowcases();
+    } else {
+      projectsGrid.innerHTML = gameDevProjectsHTML;
+      observeProjectCards();
+    }
+  };
+
+  modeToggle.addEventListener("change", syncPortfolioView);
+
+  toggleLogos.forEach(lbl => {
+    lbl.addEventListener("click", () => {
+      const view = lbl.getAttribute("data-view");
+      modeToggle.checked = (view === "gameartist");
+      modeToggle.dispatchEvent(new Event("change"));
+    });
+  });
+
+  // Sync state on load (in case of page refresh retaining state)
+  syncPortfolioView();
+}
 
 // Skills magnet hover: only the neighbouring boxes grow a little
 const skillBoxes = document.querySelectorAll(".skill-box");

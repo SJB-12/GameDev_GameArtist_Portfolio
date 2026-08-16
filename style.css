@@ -16,7 +16,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -192,6 +192,8 @@ body.is-loading {
 .section {
   margin-bottom: 100px;
   padding: 0 70px;
+  scroll-snap-align: start;
+  scroll-margin-top: 92px;
 }
 
 .glass-card {
@@ -230,6 +232,7 @@ body.is-loading {
 .hero-section {
   min-height: 100svh;
   scroll-snap-align: start;
+  scroll-margin-top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -612,42 +615,63 @@ body.is-loading {
 
 @media (max-width: 1024px) {
   .welcome-top {
+    flex-direction: column;
+    text-align: center;
+    padding: clamp(20px, 4vh, 60px) clamp(16px, 4vw, 48px);
     min-height: auto;
-    padding: 52px 48px;
   }
 
   .welcome-text {
-    max-width: 620px;
+    width: 100%;
+    max-width: 100%;
   }
 
   .about-aside {
-    width: 520px;
-    margin-left: -40px;
+    width: 100%;
+    margin: clamp(20px, 3vh, 40px) 0 0;
+  }
+
+  .profile-wrapper {
+    margin: 0 auto;
+    transform: none !important;
+  }
+
+  .about-aside.in-view .profile-wrapper {
+    animation: slideUpFromBottom 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .profile-frame {
-    width: 360px;
-    height: 430px;
+    width: clamp(220px, 30vw, 340px);
+    height: clamp(260px, 35vw, 400px);
+    margin: 0 auto;
+    border-radius: 36px;
   }
 
   .welcome-stats {
-    flex-wrap: nowrap;
-    gap: 12px;
-    margin-top: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(8px, 1.5vw, 16px);
+    margin-top: clamp(12px, 2vh, 24px);
+    max-width: 100%;
   }
 
   .stats-box {
-    width: 95px;
-    min-height: 75px;
-    padding: 10px 12px;
+    width: clamp(70px, 15vw, 90px);
+    min-height: clamp(65px, 10vh, 75px);
+    padding: 8px 6px;
+    border-radius: 10px;
   }
 
   .stats-number {
-    font-size: 24px;
+    font-size: clamp(18px, 2.5vw, 22px);
   }
 
   .stats-label {
-    font-size: 10px;
+    font-size: clamp(8px, 1.2vw, 10px);
+  }
+  
+  .welcome-stats .stats-box:last-child {
+    width: clamp(85px, 18vw, 105px);
   }
 }
 
@@ -710,7 +734,7 @@ body.is-loading {
   grid-column: 1 / -1;
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  margin-right: 0;
+  margin-right: calc(50% - 50vw);
 }
 
 :root {
@@ -855,7 +879,7 @@ body.is-loading {
 
 .projects-hero {
   grid-column: 1 / -1;
-  height: 100vh;
+  height: calc(100vh - 92px);
   display: grid;
   place-items: center;
   scroll-snap-align: start;
@@ -898,11 +922,18 @@ body.is-loading {
 /* ARTIST SHOWCASE (full-screen subsection) */
 /* ============================= */
 
+/* Disable scroll snap on projects container in artist mode so subsections snap individually */
+body.artist-mode #projects {
+  scroll-snap-align: none;
+}
+
 .artist-showcase {
   grid-column: 1 / -1;
   position: relative;
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  height: calc(100vh - 92px);
   overflow: hidden;
   scroll-snap-align: start;
   scroll-margin-top: 92px;
@@ -950,8 +981,8 @@ body.is-loading {
   align-items: center;
   gap: 5%;
   width: 100%;
-  height: 100vh;
-  padding: 80px 6%;
+  height: 100%;
+  padding: clamp(20px, 6vh, 80px) 6%;
   box-sizing: border-box;
   opacity: 0;
   transform: scale(1.28);
@@ -1066,12 +1097,12 @@ body.is-loading {
 @media (max-width: 900px) {
   .artist-showcase-inner {
     flex-direction: column;
-    gap: 30px;
+    gap: clamp(10px, 3vh, 24px);
     justify-content: center;
-    padding: 80px 6%;
+    padding: clamp(20px, 4vh, 50px) 4%;
   }
   .artist-showcase-text {
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     max-width: 100%;
     text-align: center;
     padding-right: 0;
@@ -1079,12 +1110,20 @@ body.is-loading {
   .artist-showcase-right {
     flex: 1 1 auto;
     width: 100%;
+    justify-content: center;
   }
   .artist-showcase-cards {
-    flex-direction: column;
+    flex-direction: row;
+    gap: clamp(8px, 2vw, 18px);
+    justify-content: center;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .artist-card {
+    max-width: clamp(80px, 25vw, 140px);
   }
   .artist-card:nth-child(2) {
-    transform: none;
+    transform: translateY(clamp(10px, 1.5vh, 20px));
   }
 }
 
@@ -1131,9 +1170,20 @@ body.is-loading {
     height: 300px;
   }
   .char-card {
-    width: 160px;
-    margin-left: -80px;
-    margin-top: -106px;
+    width: min(160px, 40vw);
+    margin-left: calc(-0.5 * min(160px, 40vw));
+    margin-top: calc(-0.66 * min(160px, 40vw));
+  }
+}
+
+@media (max-width: 600px) {
+  .char-carousel {
+    height: clamp(200px, 30vh, 260px);
+  }
+  .char-card {
+    width: min(120px, 35vw);
+    margin-left: calc(-0.5 * min(120px, 35vw));
+    margin-top: calc(-0.66 * min(120px, 35vw));
   }
 }
 
@@ -1190,18 +1240,23 @@ body.is-loading {
 @media (max-width: 900px) {
   .tools-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: clamp(10px, 2.5vw, 20px);
   }
   .tool-icon-card {
-    width: 150px;
-    height: 150px;
+    width: clamp(100px, 18vw, 150px);
+    height: clamp(100px, 18vw, 150px);
+    border-radius: 12px;
   }
 }
 
 @media (max-width: 600px) {
+  .tools-grid {
+    gap: clamp(6px, 1.5vw, 12px);
+  }
   .tool-icon-card {
-    width: 100px;
-    height: 100px;
+    width: clamp(75px, 22vw, 100px);
+    height: clamp(75px, 22vw, 100px);
+    border-radius: 8px;
   }
 }
 
@@ -1245,18 +1300,21 @@ body.is-loading {
 @media (max-width: 900px) {
   .stadium-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: clamp(12px, 3vw, 20px);
   }
   .stadium-card {
-    width: 200px;
-    height: 150px;
+    width: clamp(140px, 26vw, 200px);
+    height: clamp(105px, 19.5vw, 150px);
   }
 }
 
 @media (max-width: 600px) {
+  .stadium-grid {
+    gap: clamp(8px, 2vw, 16px);
+  }
   .stadium-card {
-    width: 150px;
-    height: 110px;
+    width: clamp(120px, 40vw, 150px);
+    height: clamp(90px, 30vw, 110px);
   }
 }
 
@@ -1311,20 +1369,20 @@ body.is-loading {
     height: 460px;
   }
   .personal-card {
-    width: 420px;
-    margin-left: -210px;
-    margin-top: -157px;
+    width: min(420px, 85vw);
+    margin-left: calc(-0.5 * min(420px, 85vw));
+    margin-top: calc(-0.375 * min(420px, 85vw));
   }
 }
 
 @media (max-width: 600px) {
   .personal-carousel {
-    height: 300px;
+    height: clamp(220px, 35vh, 300px);
   }
   .personal-card {
-    width: 300px;
-    margin-left: -150px;
-    margin-top: -113px;
+    width: min(280px, 80vw);
+    margin-left: calc(-0.5 * min(280px, 80vw));
+    margin-top: calc(-0.375 * min(280px, 80vw));
   }
 }
 
@@ -1512,51 +1570,20 @@ body.is-loading {
     grid-template-columns: 1fr;
   }
 
-  .welcome-top {
-    flex-direction: column;
-    text-align: center;
-    padding: 40px 20px;
-    min-height: auto;
+  .about-intro,
+  .about-copy {
+    font-size: clamp(14px, 3.5vw, 16px);
+    line-height: 1.5;
+    text-align: left;
   }
 
-  .welcome-container {
-    min-height: auto;
+  .about-copy + .about-copy {
+    margin-top: 10px;
   }
 
-  .welcome-text {
-    width: 100%;
-  }
-
-  .about-aside {
-    width: 100%;
-    margin: 30px 0 0;
-  }
-
-  .profile-frame {
-    width: min(300px, 85vw);
-    height: min(320px, 90vw);
-    margin: 0 auto;
-  }
-
-  .welcome-stats {
-    gap: 18px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 12px;
-  }
-
-  .stats-box {
-    width: 80px;
-    min-height: 70px;
-    padding: 10px 8px;
-  }
-
-  .stats-number {
-    font-size: 22px;
-  }
-
-  .stats-label {
-    font-size: 10px;
+  .project-card {
+    scroll-snap-align: start;
+    scroll-margin-top: 110px;
   }
 
   .skills-collage {
