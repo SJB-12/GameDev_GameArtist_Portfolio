@@ -93,10 +93,8 @@ const toggleLogos = document.querySelectorAll(".toggle-logo");
 const projectsGrid = document.getElementById("projects-grid-container");
 
 const gameDevProjectsHTML = `
-        <!-- PROJECTS HERO -->
-        <div class="projects-hero">
-          <h2 class="projects-hero-title">Projects</h2>
-        </div>
+        <!-- PROJECTS HEADING -->
+        <h2 class="projects-heading">Projects</h2>
 
         <!-- PROJECT 1 -->
         <article class="project-card">
@@ -413,6 +411,7 @@ if (modeToggle && projectsGrid) {
       observeShowcases();
     } else {
       projectsGrid.innerHTML = gameDevProjectsHTML;
+      observeProjectCards();
     }
   });
 
@@ -528,3 +527,28 @@ function observeShowcases() {
   document.querySelectorAll(".artist-showcase").forEach(el => showcaseObserver.observe(el));
 }
 observeShowcases();
+
+// Game Dev project cards: fall in from the front as they scroll into view
+const cardObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+function observeProjectCards() {
+  const cards = document.querySelectorAll("#projects-grid-container .project-card");
+  cards.forEach((card, i) => {
+    card.style.setProperty("--delay", `${i * 0.12}s`);
+    if (!card.classList.contains("observed")) {
+      card.classList.add("observed");
+      cardObserver.observe(card);
+    }
+  });
+}
+observeProjectCards();
