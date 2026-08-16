@@ -269,80 +269,129 @@ const gameArtistProjectsHTML = `
           </div>
         </div>
 
-        <!-- ART PROJECT 2 -->
-        <article class="project-card">
-          <div class="project-image-container">
-            <img src="artPortfolioFiles/wall-e 1.png" alt="Wall-E Fan Art 3D Model" class="project-image">
+        <!-- ART SHOWCASE 2: CHARACTERS -->
+        <div class="artist-showcase">
+          <div class="artist-showcase-bg">
+            <img src="artPortfolioFiles/wcpl banner.png" alt="Characters Banner Art">
           </div>
-          <h3>Wall-E 3D Model & Render</h3>
-          <div class="project-tools">
-            <span class="tool-tag">Blender</span>
-            <span class="tool-tag">Substance Painter</span>
-          </div>
-          <p>
-            Detailed hard-surface modeling and texturing study of Wall-E, featuring weathered materials and accurate mechanical proportions.
-          </p>
-        </article>
 
-        <!-- ART PROJECT 3 -->
-        <article class="project-card">
-          <div class="project-image-container">
-            <img src="artPortfolioFiles/ayodhyabanner.png" alt="Ayodhya Environment Art" class="project-image">
-          </div>
-          <h3>Ayodhya Environment Design</h3>
-          <div class="project-tools">
-            <span class="tool-tag">Blender</span>
-            <span class="tool-tag">Unity</span>
-          </div>
-          <p>
-            Majestic cultural environment concept and modular architectural asset designs, optimized for real-time rendering.
-          </p>
-        </article>
+          <div class="artist-showcase-inner">
+            <div class="artist-showcase-text">
+              <h2 class="artist-showcase-title">Cricket Clash</h2>
+              <p class="artist-showcase-subtitle">Wega Labs</p>
+            </div>
 
-        <!-- ART PROJECT 4 -->
-        <article class="project-card">
-          <div class="project-image-container">
-            <img src="artPortfolioFiles/robo rendered 1.png" alt="Sci-Fi Robot Render" class="project-image">
+            <div class="artist-showcase-right">
+              <h3 class="artist-showcase-heading">Character Showcase</h3>
+              <div class="char-carousel" id="char-carousel">
+                <div class="char-card"><img src="artPortfolioFiles/Characters/char1.png" alt="Character 1"></div>
+                <div class="char-card"><img src="artPortfolioFiles/Characters/char2.png" alt="Character 2"></div>
+                <div class="char-card"><img src="artPortfolioFiles/Characters/char3.png" alt="Character 3"></div>
+                <div class="char-card"><img src="artPortfolioFiles/Characters/char4.png" alt="Character 4"></div>
+                <div class="char-card"><img src="artPortfolioFiles/Characters/char5.png" alt="Character 5"></div>
+                <div class="char-card"><img src="artPortfolioFiles/Characters/char6.png" alt="Character 6"></div>
+              </div>
+            </div>
           </div>
-          <h3>Sci-Fi Mecha Robot</h3>
-          <div class="project-tools">
-            <span class="tool-tag">Blender</span>
-            <span class="tool-tag">Texturing</span>
-          </div>
-          <p>
-            Hard surface sci-fi robot concept rendered with atmospheric lighting and detailed paneling textures.
-          </p>
-        </article>
+        </div>
 
-        <!-- ART PROJECT 5 -->
-        <article class="project-card">
-          <div class="project-image-container">
-            <img src="artPortfolioFiles/black hole 3.png" alt="Black Hole Visual Effect" class="project-image">
+        <!-- ART SHOWCASE 3: TOOLS & ICONS -->
+        <div class="artist-showcase">
+          <div class="artist-showcase-bg artist-showcase-bg--dim">
+            <img src="artPortfolioFiles/wcpl banner.png" alt="Tools Banner Art">
           </div>
-          <h3>Black Hole VFX Art</h3>
-          <div class="project-tools">
-            <span class="tool-tag">Blender</span>
-            <span class="tool-tag">Shaders</span>
-          </div>
-          <p>
-            Space-themed cosmic visual art study focusing on gravitational lensing effects and glowing accretion disks.
-          </p>
-        </article>
 
-        <!-- ART PROJECT 6 -->
-        <article class="project-card">
-          <div class="project-image-container">
-            <img src="artPortfolioFiles/gaming room 1.png" alt="Gaming Room Interior" class="project-image">
+          <div class="artist-showcase-inner">
+            <div class="artist-showcase-text">
+              <h2 class="artist-showcase-title">Cricket Clash</h2>
+              <p class="artist-showcase-subtitle">Wega Labs</p>
+            </div>
+
+            <div class="artist-showcase-right">
+              <h3 class="artist-showcase-heading">Icon Pack</h3>
+              <div class="tools-grid">
+                <div class="tool-icon-card">
+                  <img src="artPortfolioFiles/icons/batchicon.png" alt="Batch Icon">
+                </div>
+                <div class="tool-icon-card">
+                  <img src="artPortfolioFiles/icons/Campaign edited 2.png" alt="Campaign Icon">
+                </div>
+                <div class="tool-icon-card">
+                  <img src="artPortfolioFiles/icons/CUT_Coins 5.png" alt="Coins Icon">
+                </div>
+                <div class="tool-icon-card">
+                  <img src="artPortfolioFiles/icons/E3.png" alt="E3 Icon">
+                </div>
+                <div class="tool-icon-card">
+                  <img src="artPortfolioFiles/icons/shop new 2 edited 1.png" alt="Shop Icon">
+                </div>
+                <div class="tool-icon-card">
+                  <img src="artPortfolioFiles/icons/stadIcon.png" alt="Stadium Icon">
+                </div>
+              </div>
+            </div>
           </div>
-          <h3>Stylized Gaming Room Interior</h3>
-          <div class="project-tools">
-            <span class="tool-tag">Blender</span>
-            <span class="tool-tag">Interior Design</span>
+        </div>
+
+        <!-- ART SHOWCASE 4: STADIUM -->
+        <div class="artist-showcase">
+          <div class="artist-showcase-bg">
+            <img src="artPortfolioFiles/wcpl banner.png" alt="Stadium Banner Art">
           </div>
-          <p>
-            Cozy, highly detailed stylized interior environment featuring custom props, neon lighting, and gamer aesthetics.
-          </p>
-        </article>
+
+          <div class="artist-showcase-inner">
+            <div class="artist-showcase-text">
+              <h2 class="artist-showcase-title">Cricket Clash</h2>
+              <p class="artist-showcase-subtitle">Wega Labs</p>
+            </div>
+
+            <div class="artist-showcase-right">
+              <h3 class="artist-showcase-heading">Stadium</h3>
+              <div class="stadium-grid">
+                <div class="stadium-card">
+                  <img src="artPortfolioFiles/Stadium/sta1.png" alt="Stadium 1">
+                </div>
+                <div class="stadium-card">
+                  <img src="artPortfolioFiles/Stadium/sta2.png" alt="Stadium 2">
+                </div>
+                <div class="stadium-card">
+                  <img src="artPortfolioFiles/Stadium/sta3.png" alt="Stadium 3">
+                </div>
+                <div class="stadium-card">
+                  <img src="artPortfolioFiles/Stadium/sta4.png" alt="Stadium 4">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ART SHOWCASE 5: PERSONAL PROJECTS -->
+        <div class="artist-showcase">
+          <div class="artist-showcase-bg">
+            <img src="artPortfolioFiles/PersonalProjects/black hole 3.png" alt="Personal Projects Banner Art">
+          </div>
+
+          <div class="artist-showcase-inner">
+            <div class="artist-showcase-text">
+              <h2 class="artist-showcase-title">Personal Projects</h2>
+              <p class="artist-showcase-subtitle">My Artwork</p>
+            </div>
+
+            <div class="artist-showcase-right">
+              <h3 class="artist-showcase-heading">Art Gallery</h3>
+              <div class="personal-carousel" id="personal-carousel">
+                <div class="personal-card"><img src="artPortfolioFiles/PersonalProjects/avengers 1.png" alt="Avengers"></div>
+                <div class="personal-card"><img src="artPortfolioFiles/PersonalProjects/cup 1.png" alt="Cup"></div>
+                <div class="personal-card"><img src="artPortfolioFiles/PersonalProjects/gaming room 1.png" alt="Gaming Room"></div>
+                <div class="personal-card"><img src="artPortfolioFiles/PersonalProjects/robo rendered 1.png" alt="Robo Render"></div>
+                <div class="personal-card"><img src="artPortfolioFiles/PersonalProjects/teleport 1.png" alt="Teleport"></div>
+                <div class="personal-card"><img src="artPortfolioFiles/PersonalProjects/untitled 1.png" alt="Untitled"></div>
+                <div class="personal-card"><img src="artPortfolioFiles/PersonalProjects/vuluan 1.png" alt="Vuluan"></div>
+                <div class="personal-card"><img src="artPortfolioFiles/PersonalProjects/wall-e 1.png" alt="Wall-E"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 `;
 
 if (modeToggle && projectsGrid) {
@@ -359,6 +408,9 @@ if (modeToggle && projectsGrid) {
 
     if (isArtist) {
       projectsGrid.innerHTML = gameArtistProjectsHTML;
+      initCharCarousel();
+      initPersonalCarousel();
+      observeShowcases();
     } else {
       projectsGrid.innerHTML = gameDevProjectsHTML;
     }
@@ -376,3 +428,103 @@ if (modeToggle && projectsGrid) {
     });
   });
 }
+
+// Character carousel: cards cycle so the center card enlarges, then shrinks as the next one takes its place
+function initCharCarousel() {
+  const carousel = document.getElementById("char-carousel");
+  if (!carousel) return;
+
+  const cards = Array.from(carousel.children);
+  const total = cards.length;
+  let centerIndex = 0;
+  let timer = null;
+
+  const layout = () => {
+    cards.forEach((card, i) => {
+      let rel = (i - centerIndex) % total;
+      if (rel > 3) rel -= total;
+      if (rel < -3) rel += total;
+
+      let x, scale, z, opacity;
+      switch (rel) {
+        case 0:
+          x = 0; scale = 1.35; z = 10; opacity = 1;
+          break;
+        case 1:
+          x = 240; scale = 1; z = 6; opacity = 1;
+          break;
+        case -1:
+          x = -240; scale = 1; z = 6; opacity = 1;
+          break;
+        case 2:
+          x = 470; scale = 0.72; z = 3; opacity = 0.55;
+          break;
+        case -2:
+          x = -470; scale = 0.72; z = 3; opacity = 0.55;
+          break;
+        default:
+          x = 0; scale = 0.45; z = 1; opacity = 0.25;
+          break;
+      }
+
+      card.style.zIndex = z;
+      card.style.opacity = opacity;
+      card.style.transform = `translate(${x}px, 0) scale(${scale})`;
+      card.style.boxShadow = rel === 0 ? "0 30px 70px rgba(0,0,0,0.7), 0 0 30px rgba(77,184,255,0.3)" : "0 20px 50px rgba(0,0,0,0.55)";
+    });
+  };
+
+  const step = () => {
+    centerIndex = (centerIndex + 1) % total;
+    layout();
+    timer = setTimeout(step, 2400);
+  };
+
+  layout();
+  timer = setTimeout(step, 2400);
+}
+
+// Personal carousel: shows one large card at a time, cycling through them
+function initPersonalCarousel() {
+  const carousel = document.getElementById("personal-carousel");
+  if (!carousel) return;
+
+  const cards = Array.from(carousel.children);
+  const total = cards.length;
+  let index = 0;
+  let timer = null;
+
+  const show = i => {
+    cards.forEach((card, idx) => {
+      card.classList.toggle("current", idx === i);
+    });
+  };
+
+  const step = () => {
+    index = (index + 1) % total;
+    show(index);
+    timer = setTimeout(step, 3000);
+  };
+
+  show(0);
+  timer = setTimeout(step, 3000);
+}
+
+// Animate artist showcase subsections whenever they enter the viewport
+const showcaseObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+      } else {
+        entry.target.classList.remove("in-view");
+      }
+    });
+  },
+  { threshold: 0.35 }
+);
+
+function observeShowcases() {
+  document.querySelectorAll(".artist-showcase").forEach(el => showcaseObserver.observe(el));
+}
+observeShowcases();
