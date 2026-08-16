@@ -1316,70 +1316,67 @@ body.is-loading {
 /* SKILLS */
 /* ============================= */
 
-.skills-categories-horizontal {
+.skills-collage {
   display: flex;
-  flex-direction: row;
-  gap: 30px;
-  margin-top: 30px;
-  max-width: 100%;
-  justify-content: space-between;
-}
-
-.skill-category {
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  padding: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
-  flex: 1;
-  min-height: 300px;
-}
-
-.skill-category:hover {
-  border-color: rgba(77, 184, 255, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.category-title {
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: var(--accent);
-  text-align: center;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.skills-vertical {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  gap: 28px;
+  max-width: 1100px;
+  margin: 40px auto 0;
+  padding: 24px;
 }
 
 .skill-box {
-  background: linear-gradient(135deg, rgba(77, 184, 255, 0.1), rgba(77, 184, 255, 0.05));
-  padding: 12px 20px;
-  border-radius: 10px;
-  border: 1px solid rgba(77, 184, 255, 0.2);
-  font-size: 16px;
-  letter-spacing: 0.5px;
+  position: relative;
+  padding: 20px 34px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(77, 184, 255, 0.12), rgba(77, 184, 255, 0.05));
+  border: 1px solid rgba(77, 184, 255, 0.25);
   color: #dbe8f5;
-  backdrop-filter: blur(4px);
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  width: 100%;
-  max-width: 200px;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease, color 0.35s ease, opacity 0.35s ease, filter 0.35s ease;
+  cursor: default;
 }
 
+/* Lens ring highlight */
+.skill-box::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 18px;
+  border: 2px solid rgba(77, 184, 255, 0);
+  box-shadow: 0 0 0 0 rgba(77, 184, 255, 0);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+  pointer-events: none;
+}
+
+/* Magnifying glass effect on hover */
 .skill-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transform: scale(1.35);
+  z-index: 6;
   border-color: var(--accent);
-  color: var(--accent);
-  background: linear-gradient(135deg, rgba(77, 184, 255, 0.2), rgba(77, 184, 255, 0.1));
+  color: #fff;
+  background: linear-gradient(135deg, rgba(77, 184, 255, 0.35), rgba(77, 184, 255, 0.18));
+  box-shadow: 0 18px 44px rgba(77, 184, 255, 0.45), 0 0 34px rgba(77, 184, 255, 0.35);
+  filter: brightness(1.12);
+}
+
+.skill-box:hover::after {
+  border-color: rgba(77, 184, 255, 0.6);
+  box-shadow: 0 0 30px rgba(77, 184, 255, 0.4);
+}
+
+/* Neighbours fall out of focus, like the area around the lens */
+.skill-box.near {
+  transform: scale(0.92);
+  opacity: 0.55;
+  filter: blur(0.6px);
 }
 
 /* ============================= */
@@ -1546,28 +1543,8 @@ body.is-loading {
     font-size: 10px;
   }
 
-  .skills-categories-horizontal {
-    flex-direction: column;
-    gap: 25px;
-  }
-
-  .skill-category {
-    padding: 20px 15px;
-    min-height: auto;
-  }
-
-  .category-title {
-    font-size: 20px;
-  }
-
-  .skills-vertical {
-    gap: 10px;
-  }
-
-  .skill-box {
-    padding: 10px 16px;
-    font-size: 15px;
-    max-width: 180px;
+  .skills-collage {
+    max-width: 100%;
   }
 }
 
@@ -1588,19 +1565,10 @@ body.is-loading {
     font-size: 17px;
   }
 
-  .skill-category {
-    padding: 15px 10px;
+  .skill-box {
+    padding: 10px 16px;
+    font-size: 13px;
   }
-
-  .skills-vertical {
-    gap: 8px;
-  }
-
-   .skill-box {
-     padding: 8px 12px;
-     font-size: 14px;
-     max-width: 160px;
-   }
 }
 
 /* ============================= */

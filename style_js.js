@@ -552,3 +552,23 @@ function observeProjectCards() {
   });
 }
 observeProjectCards();
+
+// Skills magnet hover: only the neighbouring boxes grow a little
+const skillBoxes = document.querySelectorAll(".skill-box");
+const SKILLS_PER_ROW = 5;
+const clearNear = (i) => {
+  [-1, 1, -SKILLS_PER_ROW, SKILLS_PER_ROW].forEach(offset => {
+    const idx = i + offset;
+    if (idx >= 0 && idx < skillBoxes.length) skillBoxes[idx].classList.remove("near");
+  });
+};
+
+skillBoxes.forEach((box, i) => {
+  box.addEventListener("mouseenter", () => {
+    [-1, 1, -SKILLS_PER_ROW, SKILLS_PER_ROW].forEach(offset => {
+      const idx = i + offset;
+      if (idx >= 0 && idx < skillBoxes.length) skillBoxes[idx].classList.add("near");
+    });
+  });
+  box.addEventListener("mouseleave", () => clearNear(i));
+});
